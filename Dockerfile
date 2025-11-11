@@ -1,5 +1,9 @@
 FROM ubuntu:22.04
 
+# Установка временной зоны без интерактивного запроса
+ENV TZ=UTC
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 # Установка системных пакетов
 RUN apt-get update && apt-get install -y \
     xvfb \
